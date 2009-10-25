@@ -1,0 +1,43 @@
+#alias	mc='LC_ALL=C mc -u -c'
+alias	mc='LC_MESSAGES=C mc -u -c'
+alias	ls='ls --color=always'
+
+alias -g '...'='../..'
+alias -g '....'='../../..'
+alias -g '.....'='../../../..'
+alias -g '......'='../../../../..'
+alias -g '.......'='../../../../../..'
+
+alias resize='/usr/X11R6/bin/resize'
+alias -g L='|less'
+alias -g G='|grep'
+alias -g T='|tail'
+alias -g H='|head'
+alias -g W='|wc -l'
+alias -g S='|sort'
+alias -g US='|sort -u'
+alias -g NS='|sort -n'
+alias -g RNS='|sort -nr'
+alias -g N='2>/dev/null'
+
+alias mv='nocorrect mv -i'      # no spelling correction on mv
+alias cp='nocorrect cp'			# no spelling correction on cp
+alias mkdir='nocorrect mkdir'	# no spelling correction on mkdir
+alias scp='nocorrect scp'
+alias mutt='mutt -y'
+
+alias ocat='DISPLAY=:0 osd_cat --lines=23 -d 3 --font="-cronyx-helvetica-bold-o-normal-*-48-*-*-*-p-*-koi8-r" --pos=middle --offset=0 --align=center --indent=0 --shadow=2 --color="red"'
+
+alias gc='gcc -O2 -Wall -pedantic -c $1'
+
+alias bnop='iconv -futf-8 -tkoi8-r|iconv -fcp1251 -tutf-8'
+alias whereami='echo `date +%H:%M:%S`" You are @work"'
+
+alias ssh='TERM=rxvt ssh'
+alias str='ssh shisha@tranq.dorms.spbu.ru'
+
+alias g='gvim'
+alias v='vim'
+
+alias make='nice make'
+alias dmake='nice dmake'

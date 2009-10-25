@@ -1,0 +1,15 @@
+# My site configuration for zsh
+
+export EMAIL_ADDR=virtuoso@slind.org
+export DEBFULLNAME="Alexander Shishkin"
+export DEBEMAIL="virtuoso@slind.org"
+export CVS_RSH=ssh
+export CVSROOT=:ext:as@ns2.sot.com:/data/cvsroot
+#export http_proxy=http://proxy.wplus.net:3128
+#export ftp_proxy=http://proxy.wplus.net:3128
+
+export PATH=${PATH}:${HOME}/shared/arm-2009q1/bin
+
+# MISC
+export RBEDIR=/home/rbe/SFINX/rbe
+

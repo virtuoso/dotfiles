@@ -1,0 +1,187 @@
+#set -x
+resize > /dev/null 2>&1
+
+[ -f .zsh_site ] && source .zsh_site
+
+# Remove this dirty workaround!
+#export LD_ASSUME_KERNEL=2.2.5
+# ^^^^
+export SHELL=/bin/$ZSH_NAME
+
+if [ -d ~/bin ]; then
+	export PATH=~/bin:${PATH}:/usr/X11R6/bin
+fi
+
+if [ `whoami` = "root" ]; then
+    export PATH=/sbin:/usr/sbin:/usr/local/sbin:${PATH}
+fi
+
+export MC_COLOR_TABLE_GREEN=normal=green,default:marked=white,default:selected=black,green:gauge=yellow,default:markselect=cyan,default:dnormal=green,default:menu=black,green:menusel=green,black:menuhot=white,default:menuhotsel=white,green:reverse=black,green:dhotnormal=white,default:directory=white,default:executable=yellow,default:editnormal=green,default:editbold=white,default:editmarked=default,green:gauge=default,cyan:link=blue,default
+export MC_COLOR_TABLE_CYAN=normal=cyan,default:marked=white,default:selected=black,cyan:gauge=yellow,default:markselect=cyan,default:dnormal=cyan,default:menu=black,cyan:menusel=cyan,black:menuhot=white,default:menuhotsel=white,cyan:reverse=black,cyan:dhotnormal=white,default:directory=white,default:executable=yellow,default:editnormal=cyan,default:editbold=white,default:editmarked=default,cyan:gauge=default,cyan:link=blue,default
+#export MC_COLOR_TABLE=normal=black,default:marked=white,default:selected=gray,black:markselect=cyan,default:dnormal=black,default:menu=gray,black:menusel=black,lightgray:menuhot=white,default:menuhotsel=white,black:reverse=gray,black:dhotnormal=white,default:directory=white,default:executable=yellow,default:editnormal=black,default:editbold=white,default:editmarked=default,black:gauge=red,cyan:link=blue,default
+export MC_COLOR_TABLE="$MC_COLOR_TABLE_CYAN"
+
+unset LC_ALL
+unset LANG
+export LANG=ru_RU.UTF-8
+export LC_ALL=ru_RU.UTF-8
+export LC_CTYPE=ru_RU.UTF-8
+export LC_COLLATE=ru_RU.UTF-8
+
+export attr_bold=`echotc md 2>/dev/null`
+export attr_reset=`echotc me 2>/dev/null`
+
+export attr_black=`echotc AF 0 2>/dev/null`
+export attr_red=`echotc AF 1 2>/dev/null`
+export attr_green=`echotc AF 2 2>/dev/null`
+export attr_yellow=`echotc AF 3 2>/dev/null`
+export attr_blue=`echotc AF 4 2>/dev/null`
+export attr_magenta=`echotc AF 5 2>/dev/null`
+export attr_cyan=`echotc AF 6 2>/dev/null`
+export attr_white=`echotc AF 7 2>/dev/null`
+
+export attr_bright_black="$attr_bold$attr_black"
+export attr_bright_red="$attr_bold$attr_red"
+export attr_bright_green="$attr_bold$attr_green"
+export attr_bright_yellow="$attr_bold$attr_yellow"
+export attr_bright_blue="$attr_bold$attr_blue"
+export attr_bright_magenta="$attr_bold$attr_magenta"
+export attr_bright_cyan="$attr_bold$attr_cyan"
+export attr_bright_white="$attr_bold$attr_white"
+
+dashline() {
+	local __lh="$1"
+	local __rh="$2"
+	echo "$attr_bright_black${__lh}${(l.(($COLUMNS-${#${__lh}}))..-.)${__rh}}$attr_reset"
+}
+
+ddashline() {
+	echo "$attr_bright_black${(l.$COLUMNS..=.)}$attr_reset"
+}
+
+banner() {
+    line1=$(ddashline)
+    line2=$(dashline)
+    cat<<EOF
+$line1
+${attr_bright_white}Starting `$SHELL --version`
+$line2
+${attr_white}Terminal type: $TERM
+Hostname:      $HOST
+Login name:    $LOGNAME
+$line2
+${attr_white}Local time:    `date`
+Locale:        $LC_CTYPE
+EOF
+}
+
+export term_col=$attr_cyan
+export time_col=$attr_cyan
+export name_col=$attr_bright_cyan
+export host_col=$attr_bright_cyan
+export path_col=$attr_bold
+export user_col=$attr_bright_green
+export root_col=$attr_bright_red
+
+export term_pr="%{$term_col%}%l%{$attr_reset%}"
+export time_pr="%{$time_col%}[%T"
+export name_pr="%{$name_col%}%n%{$attr_reset%}"
+export host_pr="%b%{$attr_cyan%}@%{$host_col%}%m%{$attr_reset%}"
+export path_pr="%{$path_col%}%B:%20<..<%~%<<%b%{$attr_reset%}"
+export user_pr="%(#.%{$root_col%}#.%{$user_col%}\$)%{$attr_reset%}"
+if dpkg --compare-versions "$ZSH_VERSION" gt "4.3.6"; then
+export PS1="$term_pr %{$attr_red%}[%{$attr_reset%}$name_pr$host_pr$path_pr$user_pr%{$attr_bright_green%}%1v%{$attr_reset%}%{$attr_red%}]%{$attr_reset%} "
+export RPS1="$time_pr/%i/%(?.OK.%{$attr_bright_red%}%?%{$attr_reset%})%{$time_col%}]%{$attr_reset%}" 
+else
+export PS1="$term_pr %{$attr_red%}[%{$attr_reset%}$name_pr$host_pr$path_pr$user_pr%{$attr_red%}]%{$attr_reset%} "
+export RPS1="$time_pr/%i/%(?.OK.%{$attr_bright_red%}%?%{$attr_reset%})%{$time_col%}]%{$attr_reset%}" 
+fi
+
+if [ $TERM = 'rxvt-unicode' ]; then
+	export TERM='rxvt'
+fi
+
+TRAPWINCH() {
+	resize >/dev/null 2>&1
+}
+
+precmd() {
+	[[ -t 1 ]] || return
+	case $TERM in
+		*xterm*|rxvt|rxvt-unicode|(dt|k|E|ml)term) print -Pn "%{\e]2;[%n@%m:%~]\a%}"
+		;;
+	esac
+	ddashline
+
+	if dpkg --compare-versions "$ZSH_VERSION" gt "4.3.6"; then
+		psvar=()
+
+		vcs_info
+		[[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
+	fi
+}
+
+preexec() {
+	[[ -t 1 ]] || return
+
+	case $TERM in
+		*xterm*|rxvt|rxvt-unicode|(dt|k|E|ml)term) print -Pn "\e]0;$1 (%n@%m)\a"
+		;;
+	esac
+
+	ddashline
+}
+
+umask 022
+
+export LISTMAX=200
+export HISTSIZE=2000
+export SAVEHIST=2000
+export TMPPREFIX=~/tmp
+export HISTFILE=~/.zsh_history
+export EDITOR=vim
+setopt AlwaysLastPrompt AppendHistory AutoMenu Beep NoHup
+setopt Equals ExtendedHistory FunctionArgzero HistBeep
+setopt HistIgnoreDups HistIgnoreSpace LongListJobs ListTypes MailWarning
+setopt MultIOs ShortLoops RmStarSilent
+export ZDOTDIR=~
+
+if [[ -f $ZDOTDIR/.zsh_aliases ]]	. $ZDOTDIR/.zsh_aliases;
+
+# If GNUls package is installed
+if which dircolors>& /dev/null
+then
+	eval `dircolors`
+else
+	unalias ls
+fi
+
+#eval `lesspipe`
+
+if [[ -f $ZDOTDIR/.zsh_bind ]]		. $ZDOTDIR/.zsh_bind;
+
+hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*})
+# The following lines were added by compinstall
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete
+zstyle ':completion:*' format 'Completing %d:'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:hosts' hosts $hosts
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/shisha/.zshrc'
+
+autoload -U compinit
+compinit
+autoload -U zfinit
+zfinit
+autoload zcalc
+autoload -Uz vcs_info
+# End of lines added by compinstall
+
+banner

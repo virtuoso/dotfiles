@@ -1,0 +1,43 @@
+bindkey -v
+
+case $TERM in 
+	linux)
+		bindkey "^[[2~" yank
+		bindkey "^[[3~" delete-char
+		bindkey "^[[5~" up-line-or-history ## PageUp
+		bindkey "^[[6~" down-line-or-history ## PageDown
+		bindkey "^[[1~" beginning-of-line
+		bindkey "^[[4~" end-of-line
+		bindkey "^[e" expand-cmd-path 
+		bindkey "^[[A" up-line-or-search ## up arrow for back-history-search
+		bindkey "^[[B" down-line-or-search ## down arrow for fwd-history-search
+		bindkey " " magic-space ## do history expansion on space
+	;;
+	*xterm*|rxvt|(dt|k|E|a|ml)term)
+		bindkey "^[[2~" yank
+		bindkey "^[[3~" delete-char
+		bindkey "^[[5~" up-line-or-history ## PageUp
+		bindkey "^[[6~" down-line-or-history ## PageDown
+		bindkey "^[OH" beginning-of-line
+		bindkey "^[OF" end-of-line
+		bindkey "^[[7~" beginning-of-line
+		bindkey "^[[8~" end-of-line
+		bindkey "^[e" expand-cmd-path ## C-e for expanding path of typed command
+		bindkey "^[[A" up-line-or-search ## up arrow for back-history-search
+		bindkey "^[[B" down-line-or-search ## down arrow for fwd-history-search
+		bindkey " " magic-space ## do history expansion on space
+	;;
+esac
+
+# Binding of the keys for command line editing
+bindkey '^X' menu-expand-or-complete
+bindkey '^R' history-incremental-search-backward
+bindkey '^K' kill-region
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^W' backward-delete-word
+bindkey '^L' clear-screen
+bindkey '\e[1~' beginning-of-line	
+bindkey '\e[4~' end-of-line
+bindkey '^ ' execute-named-cmd
+

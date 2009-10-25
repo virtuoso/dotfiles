@@ -1,0 +1,181 @@
+#
+# System configuration file for Mutt
+#
+
+source ~/.mail_aliases.myself
+source ~/.mail_aliases.lists
+
+ignore *
+unignore from: date: subject: to: cc: reply-to:
+unignore sender:
+unignore priority: importance:
+unhdr_order *
+hdr_order Sender: From From: To: Subject: Date: Delivery-date: cc:
+
+# emacs-like bindings
+bind editor    "\e<delete>"    kill-word
+bind editor    "\e<backspace>" kill-word
+
+# map delete-char to a sane value
+bind editor     <delete>  delete-char
+
+# some people actually like these settings
+set pager_stop=yes
+set pager_index_lines=6
+bind pager <up> previous-line
+bind pager <down> next-line
+#bind pager w sort-reverse
+bind index A imap-fetch-mail
+
+# don't add the hostname to the From header
+unset use_domain
+# don't generate a From header
+unset use_from
+
+# Specifies how to sort messages in the index menu.
+set sort=threads
+set sort_aux=date
+set strict_threads
+set send_charset=us-ascii:koi8-r:utf-8
+
+# Exim does not remove Bcc headers
+unset write_bcc
+# Postfix and qmail use Delivered-To for detecting loops
+unset bounce_delivered
+
+# weed out binary-only announcements to -devel-changes
+#macro index \CW T!~s\(.*source.*\)\nWn^T~A\n "Weed out binary-only announcements"
+
+# imitate the old search-body function
+macro index \eb '/~b ' 'search in message bodies'
+
+# simulate the old url menu
+macro index \cb |urlview\n 'call urlview to extract URLs out of a message'
+macro pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+set pipe_decode
+
+# Show documentation when pressing F1
+macro generic <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
+macro index   <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
+macro pager   <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
+
+# Use folders which match on \\.gz$ as gzipped folders:
+#open-hook \\.gz$ "gzip -cd %f > %t"
+#close-hook \\.gz$ "gzip -c %t > %f"
+#append-hook \\.gz$ "gzip -c %t >> %f"
+
+# If Mutt is unable to determine your site's domain name correctly, you can
+# set the default here.
+#
+set hostname=shisha.kicks-ass.net
+set imap_user='ash'
+set check_new=yes
+
+#############
+# Subscribe #
+#############
+
+subscribe lkml@vger.kernel.org
+subscribe linux-omap@vger.kernel.org
+subscribe linux-arm-kernel@lists.infradead.org
+subscribe openocd-development@lists.berlios.de
+subscribe tech-kern@netbsd.org
+subscribe port-arm@netbsd.org
+subscribe tech-toolchain@netbsd.org
+subscribe busybox@busybox.net
+
+#############
+# Mailboxes #
+#############
+set folder="~/mail"
+mailboxes !
+mailboxes imaps://inbox.spbu.ru/INBOX
+mailboxes imaps://inbox.spbu.ru/INBOX/personal
+mailboxes imaps://inbox.spbu.ru/INBOX/linux-omap
+mailboxes imaps://inbox.spbu.ru/INBOX/linux-arm-kernel
+mailboxes imaps://inbox.spbu.ru/INBOX/lkml
+mailboxes imaps://inbox.spbu.ru/INBOX/busybox
+mailboxes imaps://inbox.spbu.ru/INBOX/openocd
+mailboxes imaps://inbox.spbu.ru/INBOX/netbsd
+mailboxes imaps://inbox.spbu.ru/INBOX/friends
+mailboxes imaps://inbox.spbu.ru/INBOX/debian
+mailboxes imaps://inbox.spbu.ru/INBOX/spam
+mailboxes imaps://inbox.spbu.ru/INBOX/Spam.false
+mailboxes imaps://imap.gmail.com/INBOX
+mailboxes imaps://imap.gmail.com/slind
+mailboxes imaps://imap.gmail.com/KOS
+mailboxes imaps://imap.gmail.com/band
+mailboxes imaps://imap.gmail.com/busybox
+mailboxes +sent
+set move=no
+set editor=vim
+set from="Alexander Shishkin <virtuoso@slind.org>"
+
+# set use_8bitmime
+set header_cache=yes
+
+folder-hook . 'my_hdr From: Alexander Shishkin <virtuoso@slind.org>'
+folder-hook imap://inbox.spbu.ru/INBOX 'my_hdr From: Alexander Shishkin <ash@inbox.spbu.ru>'
+folder-hook imaps://imap.gmail.com/INBOX 'my_hdr From: Alexander Shishkin <alexander.shishckin@gmail.com>'
+
+account-hook . 'unset imap_user; unset imap_pass;'
+account-hook imaps://inbox.spbu.ru 'set imap_user=ash;'
+account-hook imaps://imap.gmail.com 'set imap_user=alexander.shishckin@gmail.com;'
+
+message-hook '~C ext-alexander.shishkin@nokia.com' 'my_hdr From: Alexander Shishkin <ext-alexander.shishkin@nokia.com>'
+message-hook '~C alexander.shishckin@gmail.com' 'my_hdr From: Alexander Shishkin <alexander.shishckin@gmail.com>'
+message-hook '~C virtuoso@slind.org' 'my_hdr From: Alexander Shishkin <virtuoso@slind.org>'
+message-hook '~C ash@koowaldah.org' 'my_hdr From: Alexander Shishkin <ash@koowaldah.org>'
+
+set folder_format="%2C %N %t %-40f %-8s %d"
+set index_format="%4C %S %-21.21n [%-11.11D] (%4l)  %s"
+
+# colors
+color normal	white default
+color attachment brightyellow default
+color hdrdefault magenta default
+color header	brightgreen default "^From:"
+color header	brightgreen default "^To:"
+color header	brightgreen default "^Subject:"
+color header	yellow default "^Delivery-date:"
+color header	yellow default "^Cc:"
+color header	yellow default "^Bcc:"
+color indicator black cyan
+color markers	brightred default
+color quoted	cyan default
+color quoted1	brightblue default
+color quoted2	blue default
+color signature cyan default
+color status	cyan blue
+color tilde	blue default
+color tree	green default
+color index blue default "~D"
+color index brightyellow default "~U"
+color index brightwhite default "~N"
+#color header	brightgreen black ^From:
+#color header	brightcyan black ^To:
+#color header	brightcyan black ^Reply-To:
+#color header	brightcyan black ^Cc:
+#color header	brightblue black ^Subject:
+#color body	brightred black [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+#color body	brightblue black (https?|ftp)://[\-\.\,/%~_:?\#a-zA-Z0-9]+
+
+##
+## More settings
+##
+set ispell=ispell
+
+# GnuPG configuration
+set pgp_decode_command="/usr/bin/gpg   --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet  --batch  --output - %f"
+set pgp_verify_command="/usr/bin/gpg   --status-fd=2 --no-verbose --quiet  --batch  --output - --verify %s %f"
+set pgp_decrypt_command="/usr/bin/gpg   --status-fd=2 --passphrase-fd 0 --no-verbose --quiet  --batch  --output - %f"
+set pgp_sign_command="/usr/bin/gpg    --no-verbose --batch --quiet   --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="/usr/bin/gpg   --no-verbose --batch --quiet   --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap /usr/bin/gpg    --batch  --quiet  --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap /usr/bin/gpg  --passphrase-fd 0  --batch --quiet  --no-verbose  --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+set pgp_import_command="/usr/bin/gpg  --no-verbose --import -v %f"
+set pgp_export_command="/usr/bin/gpg   --no-verbose --export --armor %r"
+set pgp_verify_key_command="/usr/bin/gpg   --verbose --batch  --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="/usr/bin/gpg   --no-verbose --batch --quiet   --with-colons --list-keys %r" 
+set pgp_list_secring_command="/usr/bin/gpg   --no-verbose --batch --quiet   --with-colons --list-secret-keys %r" 
+set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"

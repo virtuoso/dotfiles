@@ -1,0 +1,9 @@
+alias lkml lkml@vger.kernel.org
+alias l-o linux-omap@vger.kernel.org
+alias lakml linux-arm-kernel@lists.infradead.org
+alias openocd openocd-development@lists.berlios.de
+alias nb-kern tech-kern@netbsd.org
+alias nb-arm port-arm@netbsd.org
+alias nb-toolchain tech-toolchain@netbsd.org
+alias bb busybox@busybox.net
+

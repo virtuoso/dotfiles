@@ -1,0 +1,106 @@
+/*urxvt*font: xft:Courier Condensed:pixelsize=18
+urxvt*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-*-r*/
+defurxvt*font: -rfx-fixed-medium-r-*-*-15-*-*-*-*-*-*-*
+/*defurxvt*boldFont: -rfx-serenetypewriter-bold-r-*-*-13-*-*-*-*-*-*-* /* -cronyx-fixed-bold-r-*-*-14-*-*-*-*-*-*-*
+defurxvt*italicFont:*/
+defurxvt*cursorBlink: false
+defurxvt*scrollBar: false
+defurxvt*saveLines: 1500
+defurxvt*shading: 30
+defurxvt*foreground: cyan
+defurxvt*background: black
+defurxvt*inheritPixmap: true
+defurxvt*tintColor: white
+
+/*urxvt*font: -cronyx-fixed-medium-r-*-*-14-*-*-*-*-*-*-**/
+urxvt*font: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-*-r
+urxvt*boldFont: -rfx-serenetypewriter-bold-r-*-*-13-*-*-*-*-*-*-* /* -cronyx-fixed-bold-r-*-*-14-*-*-*-*-*-*-* */
+urxvt*italicFont:
+urxvt*cursorBlink: false
+urxvt*scrollBar: false
+urxvt*saveLines: 1500
+urxvt*shading: 30
+/*urxvt*fading: 90*/
+urxvt*foreground: cyan
+urxvt*background: black
+urxvt*inheritPixmap: true
+urxvt*tintColor: white
+/*urxvt*menu:/usr/share/doc/rxvt-unicode-ml/examples/menu/menu*/
+
+bigurxvt*font: xft:Lucida Console:pixelsize=14
+bigurxvt*boldFont:
+bigurxvt*italicFont:
+bigurxvt*cursorBlink: true
+bigurxvt*scrollBar: false
+bigurxvt*saveLines: 1500
+bigurxvt*shading: 25
+bigurxvt*fading: 90
+bigurxvt*foreground: green
+bigurxvt*background: black
+bigurxvt*inheritPixmap: true
+bigurxvt*tintColor: white
+
+rxvt*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-*-r
+rxvt*geometry: 80x32
+rxvt*background: black
+rxvt*foreground: white
+
+wterm*font3: -rfx-fixed-medium-*-semicondensed-*-*-*-*-*-*-*-koi8-r
+wterm*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-koi8-r
+wterm*font1: -rfx-fixed-medium-r-*-*-10-*-*-*-*-*-koi8-r
+wterm*font2: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-koi8-r
+/* wterm*geometry: 80x30 */
+XTerm*background: #405076
+/* XTerm*background: #304060 */
+XTerm*foreground: white
+wterm*scrollBar: false
+
+XTerm*font3: -cronyx-fixed-medium-*-semicondensed-*-*-*-*-*-*-*-*-r
+XTerm*font2: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-*-r
+XTerm*font1: -rfx-fixed-medium-r-*-*-10-*-*-*-*-*-*-r
+XTerm*font: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-*-r
+XTerm*saveLines: 1500
+XTerm*scrollBar: false
+xlock*logoutButton: -1
+xlock*background: blue
+xlock*foreground: black
+xfte*font: -adobe-courier-*-r-*-*-12-*-*-*-*-*-*-r
+
+aterm*shading: 35%
+aterm*colorUL: red
+/* aterm*visualBell: true */
+/* aterm*meta8: true */
+/* aterm*font: -*-*-medium-*-*-*-13-*-*-*-*-*-*-r */
+/* aterm*font2: -*-serenetypewriter-medium-*-*-*-12-*-*-*-*-*-*-r
+aterm*font1: -rfx-fixed-medium-r-*-*-7-*-*-*-*-*-*-r
+aterm*font3: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-koi8-r */
+
+aterm*mfont: -*-serenetypewriter-medium-r-*-*-12-*-*-*-*-*-koi8-r
+aterm*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-koi8-r
+aterm*font1: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-koi8-r
+aterm*font2: -rfx-fixed-medium-r-*-*-7-*-*-*-*-*-koi8-r
+
+XConsole*background: #405076
+XConsole*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-*-r
+
+Xmessage*font: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-*-r
+
+XClock*background: #7aa2bc
+xosview*background: #7aa2bc
+
+/* XClock*backgroundPixmap: gradient:vertical?dimension=100&start=#405076&end=gray30 */
+AcroRead*XmScrollBar.baseTranslations: #augment \
+    Ctrl<Btn4Down>: IncrementUpOrLeft(0) IncrementUpOrLeft(1)\
+    Ctrl<Btn5Down>: IncrementDownOrRight(0) IncrementDownOrRight(1)\
+    Shift<Btn4Down>: PageUpOrLeft(0) PageUpOrLeft(1)\
+    Shift<Btn5Down>: PageDownOrRight(0) PageDownOrRight(1)\
+    <Btn4Down>: IncrementUpOrLeft(0) IncrementUpOrLeft(0) \
+    IncrementUpOrLeft(0) IncrementUpOrLeft(0) IncrementUpOrLeft(0) \
+    IncrementUpOrLeft(1) IncrementUpOrLeft(1) IncrementUpOrLeft(1) \
+    IncrementUpOrLeft(1) IncrementUpOrLeft(1)\
+    <Btn5Down>: IncrementDownOrRight(0) IncrementDownOrRight(0) \
+    IncrementDownOrRight(0) IncrementDownOrRight(0) \
+    IncrementDownOrRight(0) IncrementDownOrRight(1) \
+    IncrementDownOrRight(1) IncrementDownOrRight(1) \
+    IncrementDownOrRight(1) IncrementDownOrRight(1)
+
