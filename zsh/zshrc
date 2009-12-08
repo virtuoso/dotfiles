@@ -123,25 +123,23 @@ precmd() {
 
 preexec() {
 	[[ -t 1 ]] || return
-
 	case $TERM in
 		*xterm*|rxvt|rxvt-unicode|(dt|k|E|ml)term) print -Pn "\e]0;$1 (%n@%m)\a"
 		;;
 	esac
-
 	ddashline
 }
 
 umask 022
 
 export LISTMAX=200
-export HISTSIZE=2000
-export SAVEHIST=2000
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 export TMPPREFIX=~/tmp
 export HISTFILE=~/.zsh_history
-export EDITOR=vim
-setopt AlwaysLastPrompt AppendHistory AutoMenu Beep NoHup
-setopt Equals ExtendedHistory FunctionArgzero HistBeep
+export EDITOR=emacs
+setopt AlwaysLastPrompt AppendHistory AutoMenu Beep NoHup IncappendHistory
+setopt Equals ExtendedHistory FunctionArgzero HistBeep ShareHistory
 setopt HistIgnoreDups HistIgnoreSpace LongListJobs ListTypes MailWarning
 setopt MultIOs ShortLoops RmStarSilent
 export ZDOTDIR=~
