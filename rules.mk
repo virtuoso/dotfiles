@@ -16,7 +16,7 @@ $(DESTFILES): $(FILES)
 	echo -n " * $$_s => $$_d: "; \
 	if [ ! -L $$_d ]; then \
 		echo "file"; \
-		if [ -n "$$(diff -ur $$_d $$_s)" ]; then \
+		if [ ! -f $$_d -o -n "$$(diff -ur $$_d $$_s)" ]; then \
 			echo "  ==> differ"; \
 			diff -ur $$_d $$_s > $${_s}.local-diff; \
 		fi; \
