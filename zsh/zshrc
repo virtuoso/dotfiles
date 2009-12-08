@@ -184,4 +184,8 @@ autoload zcalc
 autoload -Uz vcs_info
 # End of lines added by compinstall
 
+bindkey -e
+bindkey "^[[A" up-line-or-search
+bindkey "^[[B" down-line-or-search
+
 banner
