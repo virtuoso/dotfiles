@@ -1,0 +1,20 @@
+[user]
+	name = Alexander Shishkin
+	email = ash@koowaldah.org
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+
+[alias]
+	rlog = log --pretty=format:\"%h %Cblue%cr%Creset %an %Cgreen%s%Creset\"
+	bslog = log --pretty=format:\"%Cgreen%s%Creset by %an\"
+	lg = log --pretty=oneline
+	br = branch
+	st = status
+	wtf = whatchanged
+	kthx = cherry-pick
+
