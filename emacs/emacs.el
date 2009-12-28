@@ -8,6 +8,16 @@
        100)
       (set-frame-parameter nil 'alpha '(100 100))
     (set-frame-parameter nil 'alpha '(85 60))))
+
+(defun shisha/auto-indent ()
+  (interactive)
+  (cond ((string-match "C/l" mode-name)
+	 (c-toggle-auto-state 0)
+	 (message "Toggled crazy C auto-intentation mode")
+	 )
+	 ((message (concat "No luck with " mode-name))))
+)
+
 (menu-bar-mode)
 (tool-bar-mode)
 
@@ -27,10 +37,16 @@
 
 ;; -- whitespace errors
 (require 'show-wspace)
+(show-ws-toggle-show-trailing-whitespace)
 
 ;; -- highlight
 (require 'highlight-current-line)
 (highlight-current-line-on t)
+
+;; misc tunings
+(setq column-number-mode t)
+(show-paren-mode 1)
+(setq show-paren-style 'mixed)
 
 ;; color theme
 (load "yk.el")
@@ -41,11 +57,7 @@
 (global-set-key [(shift insert)] 'yank)
 (global-set-key [(shift delete)] 'kill-region)
 (global-set-key (kbd "C-c C-t") 'toggle-transparency)
-
-;; misc tunings
-(setq column-number-mode t)
-(show-paren-mode 1)
-(setq show-paren-style 'mixed)
+(global-set-key (kbd "C-c [") 'shisha/auto-indent)
 
 ;; C
 (defun linux-c-mode ()
@@ -57,3 +69,7 @@
   (setq tab-width 8)
   (setq indent-tabs-mode t)
   (setq c-basic-offset 8))
+
+;; lua
+(require 'lua-mode)
+(setq lua-indent-level 8)
