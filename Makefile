@@ -1,7 +1,7 @@
 BASEDIR := $(CURDIR)
 
 MAKEFLAGS := --no-print-directory
-COMPONENTS := awesome misc mutt vim xsession zsh emacs
+COMPONENTS ?= awesome misc mutt vim xsession zsh emacs
 
 default:
 	@echo "run make install to install symlinks"
