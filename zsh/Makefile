@@ -1,8 +1,7 @@
 FILES := \
 	zsh_aliases \
 	zsh_bind    \
-	zshrc       \
-	zsh_site
+	zshrc
 
 include $(BASEDIR)/rules.mk
 
