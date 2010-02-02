@@ -10,3 +10,6 @@ xkb_symbols "caps_mod4" {
 	modifier_map Mod5 { <MENU> };
 };
 
+xkb_symbols "my_parens" {
+	key <LSGT> { [ parenleft, parenright ] };
+};
