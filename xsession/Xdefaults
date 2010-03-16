@@ -1,8 +1,6 @@
 /*urxvt*font: xft:Courier Condensed:pixelsize=18
 urxvt*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-*-r*/
-defurxvt*font: -rfx-fixed-medium-r-*-*-15-*-*-*-*-*-*-*
-/*defurxvt*boldFont: -rfx-serenetypewriter-bold-r-*-*-13-*-*-*-*-*-*-* /* -cronyx-fixed-bold-r-*-*-14-*-*-*-*-*-*-*
-defurxvt*italicFont:*/
+defurxvt*font: -rfx-serenetypewriter-medium-r-*-*-12-*-*-*-*-*-*-*
 defurxvt*cursorBlink: false
 defurxvt*scrollBar: false
 defurxvt*saveLines: 1500
