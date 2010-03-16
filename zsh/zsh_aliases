@@ -36,6 +36,8 @@ alias whereami='echo `date +%H:%M:%S`" You are @work"'
 alias ssh='TERM=rxvt ssh'
 alias str='ssh shisha@tranq.dorms.spbu.ru'
 
+alias et='env TERM=xterm-256color emacsclient -nw --alternate-editor="" -c'
+alias e='emacsclient --alternate-editor="" -d ${DISPLAY} -c'
 alias g='gvim'
 alias v='vim'
 
