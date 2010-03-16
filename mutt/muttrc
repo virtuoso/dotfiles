@@ -36,6 +36,7 @@ unset use_from
 set sort=threads
 set sort_aux=date
 set strict_threads
+set collapse_unread=yes
 set send_charset=us-ascii:koi8-r:utf-8
 
 # Exim does not remove Bcc headers
@@ -108,7 +109,7 @@ mailboxes imaps://imap.gmail.com/band
 mailboxes imaps://imap.gmail.com/busybox
 mailboxes +sent
 set move=no
-set editor=vim
+set editor="emacs -nw"
 set from="Alexander Shishkin <virtuoso@slind.org>"
 
 # set use_8bitmime
