@@ -113,7 +113,7 @@ precmd() {
 	esac
 	ddashline
 
-	if dpkg --compare-versions "$ZSH_VERSION" gt "4.3.6"; then
+	if dpkg --compare-versions "$ZSH_VERSION" gt "4.3.6-dev-0+20080723-1"; then
 		psvar=()
 
 		vcs_info
