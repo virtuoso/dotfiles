@@ -82,7 +82,7 @@ aterm*font1: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-koi8-r
 aterm*font2: -rfx-fixed-medium-r-*-*-7-*-*-*-*-*-koi8-r
 
 XConsole*background: #405076
-XConsole*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-*-r
+XConsole*font: -rfx-serenetypewriter-medium-r-*-*-12-*-*-*-*-*-*-r
 
 Xmessage*font: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-*-r
 
