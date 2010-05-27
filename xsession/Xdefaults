@@ -9,6 +9,9 @@ defurxvt*foreground: cyan
 defurxvt*background: black
 defurxvt*inheritPixmap: true
 defurxvt*tintColor: white
+defurxvt*perl-ext-common: default,matcher
+defurxvt*urlLauncher: /usr/bin/iceweasel
+defurxvt*matcher.button: 1
 
 /*urxvt*font: -cronyx-fixed-medium-r-*-*-14-*-*-*-*-*-*-**/
 urxvt*font: -rfx-fixed-medium-r-*-*-14-*-*-*-*-*-*-r
