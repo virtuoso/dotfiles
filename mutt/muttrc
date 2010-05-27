@@ -113,7 +113,7 @@ set editor="emacs -nw"
 set from="Alexander Shishkin <virtuoso@slind.org>"
 
 # set use_8bitmime
-set header_cache=yes
+set header_cache=~/.mutt_cache
 
 folder-hook . 'my_hdr From: Alexander Shishkin <virtuoso@slind.org>'
 folder-hook imap://inbox.spbu.ru/INBOX 'my_hdr From: Alexander Shishkin <ash@inbox.spbu.ru>'
