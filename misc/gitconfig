@@ -9,6 +9,12 @@
 	interactive = auto
 	status = auto
 
+[sendemail]
+	aliasesfile = /home/ash/.mail_aliases.lists
+	aliasesfile = /home/ash/.mail_aliases.myself
+	aliasesfile = /home/ash/.mail_aliases.people
+	aliasfiletype = mutt
+
 [alias]
 	rlog = log --pretty=format:\"%h %Cblue%cr%Creset %an %Cgreen%s%Creset\"
 	bslog = log --pretty=format:\"%Cgreen%s%Creset by %an\"
