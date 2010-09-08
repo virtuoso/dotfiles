@@ -1,0 +1,4 @@
+export MC_COLOR_TABLE_GREEN=normal=green,default:marked=white,default:selected=black,green:gauge=yellow,default:markselect=cyan,default:dnormal=green,default:menu=black,green:menusel=green,black:menuhot=white,default:menuhotsel=white,green:reverse=black,green:dhotnormal=white,default:directory=white,default:executable=yellow,default:editnormal=green,default:editbold=white,default:editmarked=default,green:gauge=default,cyan:link=blue,default
+export MC_COLOR_TABLE_CYAN=normal=cyan,default:marked=white,default:selected=black,cyan:gauge=yellow,default:markselect=cyan,default:dnormal=cyan,default:menu=black,cyan:menusel=cyan,black:menuhot=white,default:menuhotsel=white,cyan:reverse=black,cyan:dhotnormal=white,default:directory=white,default:executable=yellow,default:editnormal=cyan,default:editbold=white,default:editmarked=default,cyan:gauge=default,cyan:link=blue,default
+export MC_COLOR_TABLE="$MC_COLOR_TABLE_CYAN"
+
