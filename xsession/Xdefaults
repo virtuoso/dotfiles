@@ -28,18 +28,21 @@ urxvt*inheritPixmap: true
 urxvt*tintColor: white
 /*urxvt*menu:/usr/share/doc/rxvt-unicode-ml/examples/menu/menu*/
 
-bigurxvt*font: xft:Lucida Console:pixelsize=14
-bigurxvt*boldFont:
-bigurxvt*italicFont:
-bigurxvt*cursorBlink: true
+bigurxvt*font: -rfx-fixed-medium-r-*-*-15-*-*-*-*-*-*-r
+bigurxvt*boldFont: -rfx-fixed-bold-r-*-*-15-*-*-*-*-*-*-r
+bigurxvt*italicFont: -rfx-fixed-medium-i-*-*-15-*-*-*-*-*-*-r
+bigurxvt*cursorBlink: false
 bigurxvt*scrollBar: false
 bigurxvt*saveLines: 1500
 bigurxvt*shading: 25
-bigurxvt*fading: 90
-bigurxvt*foreground: green
+bigurxvt*fading: 0
+bigurxvt*foreground: cyan
 bigurxvt*background: black
 bigurxvt*inheritPixmap: true
 bigurxvt*tintColor: white
+bigurxvt*perl-ext-common: default,matcher
+bigurxvt*urlLauncher: /usr/bin/iceweasel
+bigurxvt*matcher.button: 1
 
 rxvt*font: -rfx-fixed-medium-r-*-*-12-*-*-*-*-*-*-r
 rxvt*geometry: 80x32
