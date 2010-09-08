@@ -8,7 +8,6 @@ alias -g '.....'='../../../..'
 alias -g '......'='../../../../..'
 alias -g '.......'='../../../../../..'
 
-alias resize='/usr/X11R6/bin/resize'
 alias -g L='|less'
 alias -g G='|grep'
 alias -g T='|tail'
@@ -26,15 +25,9 @@ alias mkdir='nocorrect mkdir'	# no spelling correction on mkdir
 alias scp='nocorrect scp'
 alias mutt='mutt -y'
 
-alias ocat='DISPLAY=:0 osd_cat --lines=23 -d 3 --font="-cronyx-helvetica-bold-o-normal-*-48-*-*-*-p-*-koi8-r" --pos=middle --offset=0 --align=center --indent=0 --shadow=2 --color="red"'
-
-alias gc='gcc -O2 -Wall -pedantic -c $1'
-
 alias bnop='iconv -futf-8 -tkoi8-r|iconv -fcp1251 -tutf-8'
-alias whereami='echo `date +%H:%M:%S`" You are @work"'
 
 alias ssh='TERM=rxvt ssh'
-alias str='ssh shisha@tranq.dorms.spbu.ru'
 
 alias et='env TERM=xterm-256color emacsclient -nw --alternate-editor="" -c'
 alias e='emacsclient --alternate-editor="" -d ${DISPLAY} -c'
@@ -42,4 +35,3 @@ alias g='gvim'
 alias v='vim'
 
 alias make='nice make'
-alias dmake='nice dmake'
