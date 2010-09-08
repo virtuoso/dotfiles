@@ -163,8 +163,4 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '~/.zshrc'
 
-bindkey -e
-bindkey "^[[A" up-line-or-search
-bindkey "^[[B" down-line-or-search
-
 banner
