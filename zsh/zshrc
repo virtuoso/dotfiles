@@ -21,7 +21,6 @@ zfinit
 autoload zcalc
 autoload -Uz vcs_info
 
-
 if [[ "$terminfo[colors]" -ge 8 ]]; then
 	colors
 fi
@@ -110,6 +109,11 @@ precmd() {
 	esac
 }
 
+TRAPWINCH() {
+	precmd
+	zle reset-prompt
+}
+
 preexec() {
 	[[ -t 1 ]] || return
 	case $TERM in
@@ -129,7 +133,7 @@ export EDITOR=emacs
 setopt AlwaysLastPrompt AppendHistory AutoMenu Beep NoHup IncappendHistory
 setopt Equals ExtendedHistory ExtendedGlob FunctionArgzero HistBeep ShareHistory
 setopt HistIgnoreDups HistIgnoreSpace LongListJobs ListTypes MailWarning
-setopt MultIOs ShortLoops RmStarSilent
+setopt MultIOs ShortLoops RmStarSilent PromptSubst
 export ZDOTDIR=~
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
