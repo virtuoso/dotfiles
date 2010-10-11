@@ -13,7 +13,7 @@ case $TERM in
 		bindkey "^[[B" down-line-or-search ## down arrow for fwd-history-search
 		bindkey " " magic-space ## do history expansion on space
 	;;
-	*xterm*|rxvt*|(dt|k|E|a|ml)term)
+	*xterm*|*rxvt*|(dt|k|E|a|ml)term)
 		bindkey "^[[2~" yank
 		bindkey "^[[3~" delete-char
 		bindkey "^[[5~" up-line-or-history ## PageUp
