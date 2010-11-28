@@ -73,3 +73,6 @@
 ;; lua
 (require 'lua-mode)
 (setq lua-indent-level 8)
+
+;;
+(setq inhibit-startup-screen t)
