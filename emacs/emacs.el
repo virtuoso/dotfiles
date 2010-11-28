@@ -59,6 +59,7 @@
 (global-set-key [(shift delete)] 'kill-region)
 (global-set-key (kbd "C-c C-t") 'toggle-transparency)
 (global-set-key (kbd "C-c [") 'shisha/auto-indent)
+(global-set-key (kbd "C-c ]") 'show-ws-toggle-show-trailing-whitespace)
 
 ;; C
 (defun linux-c-mode ()
