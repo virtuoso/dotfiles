@@ -13,6 +13,7 @@
   (interactive)
   (cond ((string-match "C/l" mode-name)
 	 (c-toggle-auto-state 0)
+	 (c-toggle-hungry-state 0)
 	 (message "Toggled crazy C auto-intentation mode")
 	 )
 	 ((message (concat "No luck with " mode-name))))
