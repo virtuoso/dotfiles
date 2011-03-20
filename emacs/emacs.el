@@ -49,6 +49,9 @@
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
+;; notmuch
+(load "notmuchstuff.el")
+
 ;; color theme
 (load "yk.el")
 (add-hook 'server-switch-hook 'shisha/client-start-hook)
