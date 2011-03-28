@@ -291,74 +291,10 @@ clientkeys = awful.util.table.join(
         end)
 )
 
---[[ try to make use of shifty again
--- Compute the maximum number of digit we need, limited to 9
-keynumber = 0
-for s = 1, screen.count() do
-   keynumber = math.min(9, math.max(#tags[s], keynumber));
-end
-
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it works on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, keynumber do
-    globalkeys = awful.util.table.join(globalkeys,
-        awful.key({ modkey }, "#" .. i + 9,
-                  function ()
-                        local screen = mouse.screen
-                        if tags[screen][i] then
-                            awful.tag.viewonly(tags[screen][i])
-                        end
-                  end),
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = mouse.screen
-                      if tags[screen][i] then
-                          awful.tag.viewtoggle(tags[screen][i])
-                      end
-                  end),
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.movetotag(tags[client.focus.screen][i])
-                      end
-                  end),
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.toggletag(tags[client.focus.screen][i])
-                      end
-                  end))
-end
-]]--
-
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
-
--- }}}
-
---[[ -- {{{ Rules
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
-}
--- }}} ]]--
 
 shifty.config.tags = {
        ["1:chat"] = {
@@ -366,7 +302,7 @@ shifty.config.tags = {
                position = 1,
                screen = 1,
                nmaster = 3,
-               layout = awful.layout.suit.tile.left,
+               layout = awful.layout.suit.tile.bottom,
                mwfact = 0.6
        },
        ["2:www"]  = {
@@ -374,8 +310,7 @@ shifty.config.tags = {
                screen = 1,
                position = 2,
                spawn = "iceweasel",
-               layout = awful.layout.suit.tile.bottom,
-               mwfact = 0.80
+               layout = awful.layout.suit.tile.max,
        },
        ["3:work"] = {
                persist = true,
@@ -416,44 +351,78 @@ shifty.config.tags = {
 
 shifty.config.apps = {
         {
-               match = {
-                       "htop",
-                       "jackctl"
-               },
-               tag = { "6:misc" },
-       },
+		match = {
+			"htop",
+			"alsamixer",
+		},
+		--tag = { "6:misc" },
+		ontop = true,
+		float = true,
+		geometry = { 40, 40, 900, 600, },
+	},
+	{
+		match = { "gkrellm" },
+		tag = "1:chat",
+		skip_taskbar = true,
+		float = true,
+		ontop = true,
+		sticky = true,
+		nofocus = true,
+		focusable = false,
+		slave = true,
+		opacity = 0.3,
+	},
         {
-               match = {
-                       "Iceweasel.*",
-                       "Firefox.*",
-                       "SeaMonkey.*",
-		       "acroread.*"
-               },
-               tag = "2:www",
-       },
+		match = {
+			"Iceweasel.*",
+			"Firefox.*",
+			"SeaMonkey.*",
+			"acroread.*",
+			"Minefield.*",
+		},
+		tag = "2:www",
+	},
         { match = {"Links.*", "links.*" }, tag = "7:test", },
-       {
-               match = {
-                       "XClock",
-                       "XOsview",
-                       "xconsole"
-               },
-               tag = { "6:misc", "1:chat", "2:www" },
-               nofocus = 1,
-       },
+	{
+		match = {
+			"XClock",
+			"XOsview",
+			"xconsole"
+		},
+		tag = { "6:misc", "1:chat", "2:www" },
+		nofocus = true,
+		slave = yes,
+	},
+	{
+		match = {
+			"Evince.*",
+			"acroread.*",
+			"screen: serial.*"
+		},
+		tag = "4:scr",
+	},
+	{
+		match = { "qjackctl", },
+		tag = "6:misc",
+		float = true,
+	},
         { match = {"defurxvt" }, tag = "3:work", },
+	{
+		match = { "ncmpc.*", "MOC.*" },
+		tag = "6:misc",
+	},
         { match = {"MPlayer" }, tag = "3:work", float = true },
         {
-               match = {
-                       "chaturxvt",
-                       "gobby",
-                       ".*jabber",
-                       ".*mutt",
-                       "Irssi:.*",
-                       --"[screen: mutt.*",
-               },
-               tag = "1:chat",
-       },
+		match = {
+			"chaturxvt",
+			"gobby",
+			".*jabber",
+			".*mutt",
+			"Irssi:.*",
+			--"[screen: mutt.*",
+		},
+		tag = "1:chat",
+	},
         { match = { "MOC.*" }, tag = "6:misc", },
         { match = { ".*rtorrent.*" }, tag = "p2p", },
         { match = { "minicom" }, tag = "4:scr", },
@@ -461,11 +430,8 @@ shifty.config.apps = {
         { match = { "Hydrogen.*", "Audacity.*" }, tag = "5:miscfs", },
         { match = {"Gimp","Ufraw"                   }, tag = { "graph", "gimp" }             },
         { match = {"gimp-image-window"              }, slave = true,                         },
-        { match = { "" }, buttons = {
-            awful.button.new({ }, 1, function (c) client.focus = c; c:raise() end, function (c) end),
-            awful.button.new({ modkey }, 1, function (c) awful.mouse.client.move() end, function (c) end),
-            awful.button.new({ modkey }, 3, awful.mouse.client.resize, function (c) end),
-        }, },
+        { match = { "" }, buttons = clientbuttons,
+	  size_hints_honor = false, },
 }
 
 shifty.config.defaults = {
