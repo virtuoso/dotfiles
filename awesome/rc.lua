@@ -200,8 +200,8 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ amodkey,          }, "q",      awful.tag.viewprev       ),
-    awful.key({ amodkey,          }, "e",      awful.tag.viewnext       ),
+    awful.key({ amodkey,          }, ",",      awful.tag.viewprev       ),
+    awful.key({ amodkey,          }, ".",      awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
@@ -214,13 +214,23 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
+    awful.key({ amodkey,           }, "j",
+        function ()
+            awful.client.focus.byidx( 1)
+            if client.focus then client.focus:raise() end
+        end),
+    awful.key({ amodkey,           }, "k",
+        function ()
+            awful.client.focus.byidx(-1)
+            if client.focus then client.focus:raise() end
+        end),
     awful.key({ modkey,           }, "w", function () mymainmenu:show(true)        end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ amodkey,          }, "e", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ amodkey,          }, "q", function () awful.client.swap.byidx( -1)    end),
+    awful.key({ amodkey, }, "'", function () awful.client.swap.byidx(  1)    end),
+    awful.key({ amodkey, }, "a", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
@@ -235,6 +245,8 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ amodkey           }, "Delete", function () awful.util.spawn(lock) end),
     awful.key({ modkey,           }, "F2", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "F11", function () awful.util.spawn(terminal .. " -e alsamixer") end),
+    awful.key({ modkey,           }, "F12", function () awful.util.spawn(terminal .. " -e htop") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -248,7 +260,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({ modkey },            "F3",     function () mypromptbox[mouse.screen]:run() end),
+    --awful.key({ modkey },            "F3",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "F3",     obvious.popup_run_prompt.run_prompt),
 
     awful.key({ modkey }, "x",
               function ()
@@ -261,8 +274,10 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ amodkey,          }, "t",      function (c) c.ontop = not c.ontop end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
+    awful.key({ amodkey, "Control" }, "space",  awful.client.floating.delete                    ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ amodkey,          }, "space",  function (c) c:focus(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
