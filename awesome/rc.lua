@@ -7,6 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 require("shifty")
+require("wicked")
+require("obvious.popup_run_prompt")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -86,8 +88,22 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray", align = "right" })
 
+mycpu = widget({
+		       type = 'textbox',
+		       name = 'cpuwidget',
+	       })
+wicked.register(mycpu, wicked.widgets.cpu, ' <span>CPU:</span> $1%')
+
+obvious.popup_run_prompt.set_position("top")
+obvious.popup_run_prompt.set_prompt_string("Run: ")
+obvious.popup_run_prompt.set_slide(true)
+obvious.popup_run_prompt.set_prompt_font("Droid Sans Mono 14")
+obvious.popup_run_prompt.set_border_width(4)
+obvious.popup_run_prompt.set_height(30)
+
 -- Create a wibox for each screen and add it
 mywibox = {}
+mywiboxx = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -146,20 +162,28 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "bottom", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywiboxx[s] = awful.wibox({ position = "bottom", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
             mylauncher,
-            mytaglist[s],
-            mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
-        mytextclock,
-        s == 1 and mysystray or nil,
         mytasklist[s],
-        layout = awful.widget.layout.horizontal.rightleft
+        layout = awful.widget.layout.horizontal.rightleft,
+    }
+    mywiboxx[s].widgets = {
+	    mytaglist[s],
+            mypromptbox[s],
+	    {
+		    mytextclock,
+		    mycpu,
+		    s == 1 and mysystray or nil,
+		    layout = awful.widget.layout.horizontal.rightleft
+	    },
+	    layout = awful.widget.layout.horizontal.leftright,
     }
 end
 -- }}}
