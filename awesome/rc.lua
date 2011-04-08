@@ -327,7 +327,9 @@ shifty.config.tags = {
                persist = true,
                position = 3,
                screen = 2,
-               layout = awful.layout.suit.tile,
+               layout = awful.layout.suit.tile.bottom,
+               nmaster = 2,
+               ncol = 2,
                mwfact = 0.58
        },
        ["4:scr"] = {
