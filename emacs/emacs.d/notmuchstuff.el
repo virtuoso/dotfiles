@@ -1,5 +1,7 @@
 (require 'notmuch)
 
+(setq notmuch-search-oldest-first nil)
+
 (defun notmuch-search-delete-thread ()
   "Delete thread (add \"delete\" tag).
 
