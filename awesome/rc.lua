@@ -251,6 +251,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F2", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "F11", function () awful.util.spawn(terminal .. " -e alsamixer") end),
     awful.key({ modkey,           }, "F12", function () awful.util.spawn(terminal .. " -e htop") end),
+    awful.key({                   }, "XF86AudioPlay", function () awful.util.spawn("mocp -G") end),
+    awful.key({                   }, "XF86Forward", function () awful.util.spawn("mocp -f") end),
+    awful.key({                   }, "XF86Back", function () awful.util.spawn("mocp -r") end),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("mocp -v +5") end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("mocp -v -5") end),
+    awful.key({ "Shift"           }, "XF86AudioRaiseVolume", function () awful.util.spawn("mocp -v +10") end),
+    awful.key({ "Shift"           }, "XF86AudioLowerVolume", function () awful.util.spawn("mocp -v -10") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
