@@ -94,6 +94,9 @@ mycpu = widget({
 	       })
 wicked.register(mycpu, wicked.widgets.cpu, ' <span>CPU:</span> $1%')
 
+mocp = widget({ type = 'textbox', name = 'mocp' })
+wicked.register(mocp, wicked.widgets.mocp, '<span>MOC:</span> $1')
+
 obvious.popup_run_prompt.set_position("top")
 obvious.popup_run_prompt.set_prompt_string("Run: ")
 obvious.popup_run_prompt.set_slide(true)
@@ -181,6 +184,7 @@ for s = 1, screen.count() do
 		    mytextclock,
 		    mycpu,
 		    s == 1 and mysystray or nil,
+		    s == 1 and mocp or nil,
 		    layout = awful.widget.layout.horizontal.rightleft
 	    },
 	    layout = awful.widget.layout.horizontal.leftright,
