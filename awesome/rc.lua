@@ -9,6 +9,7 @@ require("naughty")
 require("shifty")
 require("wicked")
 require("obvious.popup_run_prompt")
+require("vicious")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -93,6 +94,12 @@ mycpu = widget({
 		       name = 'cpuwidget',
 	       })
 wicked.register(mycpu, wicked.widgets.cpu, ' <span>CPU:</span> $1%')
+
+mybat = widget({
+		       type = 'textbox',
+		       name = 'batwidget',
+	       })
+vicious.register(mybat, vicious.widgets.bat, '<span>[BAT $2% $3 left $1]</span>', 10, "BAT1")
 
 mocp = widget({ type = 'textbox', name = 'mocp' })
 wicked.register(mocp, wicked.widgets.mocp, '<span>MOC:</span> $1')
@@ -183,6 +190,7 @@ for s = 1, screen.count() do
 	    {
 		    mytextclock,
 		    mycpu,
+		    mybat,
 		    s == 1 and mysystray or nil,
 		    s == 1 and mocp or nil,
 		    layout = awful.widget.layout.horizontal.rightleft
