@@ -9,7 +9,7 @@ xkbcomp -I${HOME}/.xkb ${HOME}/.xkb/keymap/shisha ${DISPLAY}
 #        /usr/bin/xrandr --output DVI-0 --right-of VGA-0 && \
 #	/usr/bin/xrandr --output VGA-0 --mode 1152x864 || true
 
-rm ~/.config/xmms2/clients/xmms2-scrobbler/lock
+rm -f ~/.config/xmms2/clients/xmms2-scrobbler/lock
 
 #LC_ALL=C 
 #gkrellm&
@@ -25,7 +25,7 @@ xset b 50 50 50
 
 #xloadimage -onroot -quiet /home/pictures/Kill\ Bill/kill_bill_a_12.jpg
 #Esetroot -scale ~/pictures/No_World_No_Nothing_by_Skybase.jpg
-Esetroot -s ~/pictures/No_World_No_Nothing_by_Skybase.jpg
+#Esetroot -s ~/pictures/No_World_No_Nothing_by_Skybase.jpg
 #Esetroot -scale /opt/ftproot/pictures/WallPapers/razor-14/total_cosmic_convergence_1280x1024.jpg
 #Esetroot -scale /opt/ftproot/pictures/WallPapers/razor-14/codegreen1152x864.jpg
 
