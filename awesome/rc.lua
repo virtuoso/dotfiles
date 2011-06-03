@@ -316,13 +316,14 @@ clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 shifty.config.tags = {
-       ["1:chat"] = {
+       ["1:work"] = {
                persist = true,
                position = 1,
-               screen = 1,
-               nmaster = 3,
+               screen = 2,
                layout = awful.layout.suit.tile.bottom,
-               mwfact = 0.6
+               nmaster = 2,
+               ncol = 2,
+               mwfact = 0.58
        },
        ["2:www"]  = {
                exclusive = true,
@@ -331,14 +332,13 @@ shifty.config.tags = {
                spawn = "iceweasel",
                layout = awful.layout.suit.tile.max,
        },
-       ["3:work"] = {
+       ["3:chat"] = {
                persist = true,
                position = 3,
-               screen = 2,
-               layout = awful.layout.suit.tile.bottom,
-               nmaster = 2,
-               ncol = 2,
-               mwfact = 0.58
+               screen = 1,
+               nmaster = 3,
+               layout = awful.layout.suit.tile.floating,
+               mwfact = 0.6
        },
        ["4:scr"] = {
                layout = awful.layout.suit.max,
@@ -383,7 +383,7 @@ shifty.config.apps = {
 	},
 	{
 		match = { "gkrellm" },
-		tag = "1:chat",
+		--tag = "1:chat",
 		skip_taskbar = true,
 		float = true,
 		ontop = true,
@@ -410,7 +410,7 @@ shifty.config.apps = {
 			"XOsview",
 			"xconsole"
 		},
-		tag = { "6:misc", "1:chat", "2:www" },
+		tag = { "6:misc" },
 		nofocus = true,
 		slave = yes,
 	},
@@ -427,12 +427,12 @@ shifty.config.apps = {
 		tag = "6:misc",
 		float = true,
 	},
-        { match = {"defurxvt" }, tag = "3:work", },
+        { match = {"defurxvt" }, tag = "1:work", },
 	{
 		match = { "ncmpc.*", "MOC.*" },
 		tag = "6:misc",
 	},
-        { match = {"MPlayer" }, tag = "3:work", float = true },
+        { match = {"MPlayer" }, tag = "1:work", float = true },
         {
 		match = {
 			"chaturxvt",
@@ -442,12 +442,12 @@ shifty.config.apps = {
 			"Irssi:.*",
 			--"[screen: mutt.*",
 		},
-		tag = "1:chat",
+		tag = "3:chat",
 	},
         { match = { "MOC.*" }, tag = "6:misc", },
         { match = { ".*rtorrent.*" }, tag = "p2p", },
         { match = { "minicom" }, tag = "4:scr", },
-        { match = {"emacs@.*" }, tag = "3:work", },
+        { match = {"emacs@.*" }, tag = "1:work", },
         { match = { "Hydrogen.*", "Audacity.*" }, tag = "5:miscfs", },
         { match = {"Gimp","Ufraw"                   }, tag = { "graph", "gimp" }             },
         { match = {"gimp-image-window"              }, slave = true,                         },
