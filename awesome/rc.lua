@@ -472,6 +472,10 @@ for i = 1, ( shifty.config.maxtags or 9 ) do
                   function ()
                           awful.tag.viewtoggle(shifty.getpos(i))
                   end),
+        awful.key({ amodkey }, "#" .. i + 9,
+                  function ()
+                          awful.tag.viewtoggle(shifty.getpos(i))
+                  end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
