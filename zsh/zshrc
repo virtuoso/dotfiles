@@ -111,7 +111,7 @@ precmd() {
 
 TRAPWINCH() {
 	precmd
-	zle reset-prompt
+	zle reset-prompt >/dev/null 2>&1
 }
 
 preexec() {
