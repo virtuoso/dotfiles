@@ -400,6 +400,18 @@ shifty.config.apps = {
 		slave = true,
 		opacity = 0.3,
 	},
+	{
+		match = { "florence" },
+		skip_taskbar = true,
+		float = true,
+		ontop = true,
+		sticky = true,
+		nofocus = true,
+		focusable = false,
+		slave = true,
+		opacity = 0.3,
+		--geometry = { 0, 0, 421, 105 },
+	},
         {
 		match = {
 			"Iceweasel.*",
