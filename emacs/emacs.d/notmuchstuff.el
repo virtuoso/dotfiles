@@ -43,3 +43,13 @@ This function advances the next thread when finished."
   (forward-line))
 
 (define-key notmuch-search-mode-map "A" 'notmuch-search-archive-and-read-thread)
+
+(setq notmuch-saved-searches
+      (quote (
+	      ("my_new_patches" . "tag:patch and tag:personal and tag:unread")
+	      ("my_patches" . "tag:patch and tag:personal")
+	      ("inbox" . "tag:inbox")
+	      ("unread" . "tag:unread")
+	      )
+	     )
+      )

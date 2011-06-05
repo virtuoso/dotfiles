@@ -36,6 +36,9 @@
 ;; -- gitsum
 (require 'gitsum)
 
+;; -- magit
+(setq magit-commit-signoff t)
+
 ;; -- whitespace errors
 (require 'show-wspace)
 (show-ws-toggle-show-trailing-whitespace)
