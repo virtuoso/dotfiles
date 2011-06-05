@@ -1,7 +1,14 @@
 #!/bin/sh
 
-export LC_ALL=ru_RU.UTF-8
-export LANG=ru_RU.UTF-8
+hdmi_head=$(xrandr|grep '^HDMI-[0-9] connected'|cut -d' ' -f1)
+dvi_head=$(xrandr|grep '^DVI-[0-9] connected'|cut -d' ' -f1)
+
+if [ -n "$hdmi_head" -a -n "$dvi_head" ]; then
+    xrandr --output $dvi_head --mode 1920x1200 --dpi 100 && \
+    xrandr --output $hdmi_head --mode 1920x1080 --dpi 100 && \
+    xrandr --output $hdmi_head --mode 1920x1080 --right-of DVI-0 --rotate normal --dpi 100
+fi
+
 #xmodmap ~/.xmodmaprc
 xkbcomp -I${HOME}/.xkb ${HOME}/.xkb/keymap/shisha ${DISPLAY}
 
