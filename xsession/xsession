@@ -17,6 +17,7 @@ xkbcomp -I${HOME}/.xkb ${HOME}/.xkb/keymap/shisha ${DISPLAY}
 #	/usr/bin/xrandr --output VGA-0 --mode 1152x864 || true
 
 rm -f ~/.config/xmms2/clients/xmms2-scrobbler/lock
+[ -x /usr/bin/mocp ] && mocp -S || :
 
 #LC_ALL=C 
 #gkrellm&
