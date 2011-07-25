@@ -534,12 +534,15 @@ client.add_signal("focus", function(c)
 	--
 	c.border_color = beautiful.border_focus
 
-	-- mouse cursor should follow focus
-	-- this prevents losing focus history on dual screen
-	-- and is nice otherwise
-	if awful.mouse.client_under_pointer() ~= c then
-		mouse.coords(c:geometry(), true)
-	end
+        local c_c = c:geometry()
+        local m_c = mouse.coords()
+
+        if m_c.x < c_c.x or m_c.x >= c_c.x + c_c.width or
+            m_c.y < c_c.y or m_c.y >= c_c.y + c_c.height then
+            if table.maxn(m_c.buttons) == 0 then
+                mouse.coords({ x = c_c.x + 5, y = c_c.y + 5})
+            end
+        end
 end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
