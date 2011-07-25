@@ -19,8 +19,8 @@
 	 ((message (concat "No luck with " mode-name))))
 )
 
-(menu-bar-mode)
-(tool-bar-mode)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
 
 (setq my-home (getenv "HOME"))
 (setq backup-directory-alist `(("." . ,(concat my-home "/.emacs.d/backup"))))
