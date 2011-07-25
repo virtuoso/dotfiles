@@ -496,8 +496,17 @@ shifty.config.clientkeys = clientkeys
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.add_signal("manage", function (c, startup)
-    -- Add a titlebar
-    --awful.titlebar.add(c, { modkey = modkey, height = 15, position = "" })
+    -- Add a titlebar to floating windows only
+    c:add_signal("property::floating",
+		 function (c)
+			  if (awful.client.floating.get(c)) then
+				  c["border_width"] = 5
+				  awful.titlebar.add(c, { modkey = modkey, height = 15, position = "" })
+			  else
+				  c["border_width"] = theme.border_width
+				  awful.titlebar.remove(c)
+			  end
+		  end)
 
     -- Enable sloppy focus
     c:add_signal("mouse::enter", function(c)
