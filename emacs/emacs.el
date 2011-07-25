@@ -26,6 +26,7 @@
 (setq backup-directory-alist `(("." . ,(concat my-home "/.emacs.d/backup"))))
 
 (push (concat my-home "/.emacs.d") load-path)
+(push (concat my-home "/share/emacs/site-lisp") load-path)
 
 ;; goodies
 ;; -- auto-complete
