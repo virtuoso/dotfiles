@@ -79,6 +79,16 @@
   (setq indent-tabs-mode t)
   (setq c-basic-offset 8))
 
+(defun qemu-c-mode ()
+  "C mode with adjusted defaults for use with the Linux kernel."
+  (interactive)
+  (c-mode)
+  (c-set-style "K&R")
+  (c-set-offset 'case-label 4)
+  (setq tab-width 4)
+  (setq indent-tabs-mode nil)
+  (setq c-basic-offset 4))
+
 ;; lua
 (require 'lua-mode)
 (setq lua-indent-level 8)
