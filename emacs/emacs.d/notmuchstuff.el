@@ -2,6 +2,18 @@
 
 (setq notmuch-search-oldest-first nil)
 
+(setq notmuch-show-all-tags-list t)
+
+(setq notmuch-search-result-format
+      `(
+	("date" . "%s ")
+	("count" . "%-7s ")
+	("authors" . "%-30s ")
+	("tags" . "(%s)")
+	("subject" . "%s ")
+	)
+      )
+
 (defun notmuch-search-delete-thread ()
   "Delete thread (add \"delete\" tag).
 
