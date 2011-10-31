@@ -279,7 +279,14 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    --awful.key({ modkey },            "F3",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ amodkey },           "F2",
+	      function ()
+		      awful.prompt.run({ prompt = "urxvt name: " },
+				       mypromptbox[mouse.screen].widget,
+				       function (x)
+					       awful.util.spawn("urxvt -name " .. x .. "urxvt")
+				       end, nil, nil)
+	      end),
     awful.key({ modkey },            "F3",     obvious.popup_run_prompt.run_prompt),
 
     awful.key({ modkey }, "x",
