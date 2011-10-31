@@ -375,6 +375,11 @@ shifty.config.tags = {
        },
        ["p2p"] = { icon = "/usr/share/pixmaps/p2p.png", icon_only = true,               },
        ["gimp"] = { layout = "tile", mwfact = 0.18, icon="/usr/share/pixmaps/gimp.png",  },
+       ["chat"] = {
+               persist = true,
+               screen = 1,
+               layout = awful.layout.suit.tile.floating,
+       },
 }
 
 shifty.config.apps = {
