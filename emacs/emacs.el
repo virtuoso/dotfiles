@@ -34,19 +34,25 @@
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 
-;; -- gitsum
-(require 'gitsum)
+;; make life easier over sshfs
+(eval-after-load "vc" '(remove-hook 'find-file-hooks 'vc-find-file-hook))
+(setq vc-handled-backends ())
 
 ;; -- magit
 (setq magit-commit-signoff t)
 
 ;; -- whitespace errors
-(require 'show-wspace)
-(show-ws-toggle-show-trailing-whitespace)
+(require 'whitespace)
+(autoload 'global-whitespace-mode "whitespace" "Toggle whitespace visualization." t)
+(autoload 'global-whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
+(setq whitespace-style
+      (quote
+       (face tabs trailing space-before-tab newline empty space-after-tab indentation)))
+(global-whitespace-mode)
+
 
 ;; -- highlight
-(require 'highlight-current-line)
-(highlight-current-line-on t)
+(global-hl-line-mode t)
 
 ;; misc tunings
 (setq column-number-mode t)
