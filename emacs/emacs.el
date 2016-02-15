@@ -27,6 +27,7 @@
 
 (push (concat my-home "/.emacs.d") load-path)
 (push (concat my-home "/share/emacs/site-lisp") load-path)
+(push (concat my-home "/.emacs.d/solarized") custom-theme-load-path)
 
 ;; goodies
 ;; -- auto-complete
