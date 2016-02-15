@@ -95,9 +95,5 @@
   (setq indent-tabs-mode nil)
   (setq c-basic-offset 4))
 
-;; lua
-(require 'lua-mode)
-(setq lua-indent-level 8)
-
 ;;
 (setq inhibit-startup-screen t)
