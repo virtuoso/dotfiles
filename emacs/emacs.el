@@ -25,7 +25,7 @@
 (setq my-home (getenv "HOME"))
 (setq backup-directory-alist `(("." . ,(concat my-home "/.emacs.d/backup"))))
 
-(push (concat my-home "/.emacs.d") load-path)
+(push (concat my-home "/.emacs.d/lisp") load-path)
 (push (concat my-home "/share/emacs/site-lisp") load-path)
 (push (concat my-home "/.emacs.d/solarized") custom-theme-load-path)
 
