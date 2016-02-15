@@ -61,7 +61,7 @@
 (setq show-paren-style 'mixed)
 
 ;; notmuch
-(load "notmuchstuff.el")
+;;(load "notmuchstuff.el")
 
 ;; color theme
 (load "yk.el")
