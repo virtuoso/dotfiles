@@ -66,6 +66,7 @@
 ;; color theme
 (load "yk.el")
 (add-hook 'server-switch-hook 'shisha/client-start-hook)
+(shisha/color-theme)
 
 ;; key bindings
 (global-set-key [(control insert)] 'kill-ring-save)

@@ -78,6 +78,7 @@
     (set-face-font 'font-lock-string-face my-bold-font)
     (set-frame-font my-normal-font)
     (set-frame-parameter nil 'background-mode 'dark)
+    (load-theme 'solarized t)
     (enable-theme 'solarized)
     t)
   )
