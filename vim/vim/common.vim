@@ -25,6 +25,7 @@ set nohlsearch
 set incsearch
 set backspace=indent,eol,start
 set ruler
+au FileType gitcommit setlocal tw=72
 
 " Trailing whitespace highlight by Kyle Moffet
 hi link localWhitespaceError Error
